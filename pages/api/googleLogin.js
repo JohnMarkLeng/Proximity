@@ -20,10 +20,7 @@ import {withIronSession} from 'next-iron-session';
 //Google firebase authentication and store server side session storage for safety. 
 
 async function handler(req, res) {
-    console.log("googleLogin.js:", req.body);
-    const uid = req.body.uid
-    const email = req.body.email
-    const accessToken = req.body.stsTokenManager.accessToken
+
 
     //WORK HERE
     // Do your authentication logic here, and get the user's information
@@ -38,6 +35,11 @@ async function handler(req, res) {
     // send to dashboard. 
 
     try{
+
+        console.log("googleLogin.js:", req.body);
+        const uid = req.body.uid
+        const email = req.body.email
+        const accessToken = req.body.stsTokenManager.accessToken
         //NEED TO IMPLEMENT FEATURE TO VERIFY THE AUTHENTICITY OF THE ACCESS TOKEN! 
         // Otherwise anyone can access this endpoint and get a session. Throw error. or error msg. 
         //Also Fix login errors, autehntication closing window error, and fix error message bc its ugly
