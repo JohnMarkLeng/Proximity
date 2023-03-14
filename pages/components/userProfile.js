@@ -13,7 +13,7 @@ export default function UserProfile(props) {
 
     // const [currentIndex, setCurrentIndex] = useState(0);
     
-    if (props && props.index && props.userInfo){
+    if (props && props.userInfo){
         const currentUser = props.userInfo[props.index];
         console.log('userprofile props', props , 'Current User:', currentUser)
     
