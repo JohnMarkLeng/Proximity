@@ -8,7 +8,6 @@ import { faInstagram, } from '@fortawesome/free-brands-svg-icons';
 
 
 
-
 export default function UserProfile(props) {
 
     // const [currentIndex, setCurrentIndex] = useState(0);

@@ -8,7 +8,7 @@ import {useEffect} from 'react';
 import Router from 'next/router';
 import { getAuth, signOut } from "firebase/auth";
 import logo from '../public/proximityLogo.png';
-import UserProfile from '@/pages/components/UserProfile'
+import UserProfile from '@/pages/components/userProfile'
 import ReactDOM from 'react-dom';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
