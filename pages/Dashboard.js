@@ -20,6 +20,7 @@ class Dashboard extends Component {
     
 
     constructor(props) {
+        
         super(props);
 
         this.state = {
@@ -31,7 +32,11 @@ class Dashboard extends Component {
             homeBlur: false,
 
         };
+
+        this.myNavRef = React.createRef();
     }
+
+    
 
     // handleClick = () => {
     //     this.setState({ count: this.state.count + 1 });
@@ -42,11 +47,14 @@ class Dashboard extends Component {
         this.setState({homeBlur: !this.state.homeBlur})
         // this.state.sideMenu = !this.state.sideMenu
         // this.state.homeBlur = !this.state.homeBlur
-        let element = document.getElementById('myNav')
-        let home = document.getElementById('Homepage')
-        ReactDOM.findDOMNode(element).style.width = this.state.sideMenu? '100%' : '0%'
+        // let element = document.getElementById('myNav')
+        let element = this.myNavRef.current;
+        // let home = document.getElementById('Homepage')
+        if (element ) {
+            ReactDOM.findDOMNode(element).style.width = this.state.sideMenu? '100%' : '0%'
+            document.body.style.backgroundColor = this.state.homeBlur? 'rgba(100,200,10,1)' : ''
+        }
         // ReactDOM.findDOMNode(home).style.backgroundColor = this.state.homeBlur? 'rgba(0,0,0,0.4)' : ''
-        document.body.style.backgroundColor = this.state.homeBlur? 'rgba(100,200,10,1)' : ''
     }
 
     leftClick = () => {
@@ -114,7 +122,7 @@ class Dashboard extends Component {
                 <link rel="icon" href="/favicon.ico" />
             </Head>
 
-            <div id="myNav" className={styles.menuOverlay} >
+            <div id="myNav" className={styles.menuOverlay} ref={this.myNavRef}>
                 <a href="javascript:void(0)" className={styles.closebtn} onClick={this.menuClick}>&times;</a>
                 <div className={styles.menuOverlayContent}>
                     <a href="#">Profile</a>

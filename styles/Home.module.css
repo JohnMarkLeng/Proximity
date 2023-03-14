@@ -103,13 +103,14 @@
   padding: 8px;
   text-decoration: none;
   font-size: 36px;
-  color: #818181;
+  color: rgb(255, 255, 255);
   display: block;
   transition: 0.3s;
 }
 
 .menuOverlay a:hover, .menuOverlay a:focus {
-  color: #f1f1f1;
+  color: rgb(11, 238, 61);
+  /* rgba(9, 163, 42, 0.69); */
 }
 
 .menuOverlay .closebtn {
