@@ -42,7 +42,7 @@ export default function Register() {
 
     const googleLoginApi = async (userData) => {
 
-        const response = await fetch('http://localhost:3000/api/googleLogin', {
+        const response = await fetch('https://proximityapp.vercel.app/api/googleLogin', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
