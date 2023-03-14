@@ -38,8 +38,10 @@ class Dashboard extends Component {
     // };
 
     menuClick = () => {
-        this.state.sideMenu = !this.state.sideMenu
-        this.state.homeBlur = !this.state.homeBlur
+        this.setState({sideMenu: !this.state.sideMenu})
+        this.setState({homeBlur: !this.state.homeBlur})
+        // this.state.sideMenu = !this.state.sideMenu
+        // this.state.homeBlur = !this.state.homeBlur
         let element = document.getElementById('myNav')
         let home = document.getElementById('Homepage')
         ReactDOM.findDOMNode(element).style.width = this.state.sideMenu? '100%' : '0%'
