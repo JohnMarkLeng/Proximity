@@ -1,10 +1,151 @@
-.main {
+
+.navbarContainer{
+  display: flex;
+  justify-content: space-between;
+}
+
+.logoutButton{
+  /* display: flex; */
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.logoDashboard{
+  display: flex;
+}
+
+.menuButton{
+  /* display: flex; */
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+
+.buttonAndProfileContainer{
+  position: relative;
+  
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  max-width: 800px; /* optional, adjust as needed */
+  margin: 0 auto; /* optional, centers the container */
+}
+
+.button{
+  outline: none;
+  border: none;
+  background-color: transparent;
+  display: flex;
+}
+
+
+
+.buttonIcons{
+  width: 40px;
+  height: 40px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.card{
+  display: flex;
+}
+
+
+/* SideNavBar Menu */
+/* body {
+  font-family: "Lato", sans-serif;
+} */
+
+.sidenav {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #111;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 60px;
+}
+
+.menuOverlay {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background: rgba(245,245,245,0.1);
+  
+  /* background-Color: rgba(100,200,10,0.15); */
+  backdrop-filter: blur(15px);
+  overflow-x: hidden;
+  transition: 0.5s;
+}
+
+.menuOverlayContent {
+  position: relative;
+  top: 25%;
+  width: 100%;
+  text-align: center;
+  margin-top: 30px;
+}
+
+.menuOverlay a {
+  padding: 8px;
+  text-decoration: none;
+  font-size: 36px;
+  color: #818181;
+  display: block;
+  transition: 0.3s;
+}
+
+.menuOverlay a:hover, .menuOverlay a:focus {
+  color: #f1f1f1;
+}
+
+.menuOverlay .closebtn {
+  position: absolute;
+  top: 20px;
+  right: 45px;
+  font-size: 60px;
+}
+
+@media screen and (max-height: 450px) {
+  .menuOverlay {overflow-y: auto;}
+  .menuOverlay a {font-size: 20px}
+  .menuOverlay .closebtn {
+  font-size: 40px;
+  top: 15px;
+  right: 35px;
+  }
+}
+
+
+
+
+/* .main {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
   padding: 6rem;
   min-height: 100vh;
+}
+
+.button{
+  width: 100px;
+  height: 30px;
+  cursor: pointer;
+
 }
 
 .description {
@@ -104,6 +245,13 @@
   transform: translateZ(0);
 }
 
+.inputBox {
+  width: 200px;
+  height: 30px;
+  margin: 5px;
+
+}
+
 .logo,
 .thirteen {
   position: relative;
@@ -130,7 +278,7 @@
   z-index: -1;
 }
 
-/* Conic Gradient Animation */
+/* Conic Gradient Animation *//*
 .thirteen::before {
   animation: 6s rotate linear infinite;
   width: 200%;
@@ -138,7 +286,7 @@
   background: var(--tile-border);
 }
 
-/* Inner Square */
+/* Inner Square *//*
 .thirteen::after {
   inset: 0;
   padding: 1px;
@@ -151,7 +299,7 @@
   background-clip: content-box;
 }
 
-/* Enable hover only on non-touch devices */
+/* Enable hover only on non-touch devices *//*
 @media (hover: hover) and (pointer: fine) {
   .card:hover {
     background: rgba(var(--card-rgb), 0.1);
@@ -173,7 +321,7 @@
   }
 }
 
-/* Mobile */
+/* Mobile *//*
 @media (max-width: 700px) {
   .content {
     padding: 4rem;
@@ -250,7 +398,7 @@
   }
 }
 
-/* Tablet and Smaller Desktop */
+/* Tablet and Smaller Desktop *//*
 @media (min-width: 701px) and (max-width: 1120px) {
   .grid {
     grid-template-columns: repeat(2, 50%);
@@ -275,4 +423,6 @@
   to {
     transform: rotate(0deg);
   }
-}
+} 
+
+*/

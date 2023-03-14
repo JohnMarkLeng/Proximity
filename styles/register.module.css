@@ -1,0 +1,16 @@
+
+
+.googleLoginDiv{
+    text-align: center;
+}
+.loginGoogleButton{
+    width: 100px;
+    height: 100px;
+    position: absolute;
+    transform: translateX(-50%);
+    top: 47%;
+    border-radius: 30px;
+    /* background-color: #04AA6D; */
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.44) -35%, rgba(0, 0, 0, .30) 105%);
+    border: none;
+}

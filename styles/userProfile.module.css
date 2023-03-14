@@ -1,0 +1,168 @@
+
+
+.profileCard{
+    
+    width: 60vmin;
+    aspect-ratio: 5.5 / 7.5;
+    border-radius: 2vmin;
+    min-width: 350px;
+    /* background-color: red; */
+    background: linear-gradient(165deg, rgba(96, 30, 50, 1) 0%, rgba(11, 238, 61, .55) 100%);
+    /* position: relative; */
+    /* top: 50%;
+    left: 50%; */
+
+    /* transform: translateX(-50%); */
+    /* text-align: center; */
+    /* overflow-x: hidden; */
+
+    overflow-y: auto;
+    padding-left:  2%;
+    padding-right:  2%;
+}
+
+
+.topContainer{
+    display: flex;
+    justify-content: space-between;
+}
+
+.topContainerButtons {
+    outline: none;
+    border: none;
+    background-color: transparent;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    cursor: pointer;
+    color: white;
+}
+
+/* container for all cards. */
+.CardContainer{
+
+    width:100%;
+    position: relative;
+    display: flex;
+    justify-content: space-evenly; /*This is what spaces it evenly in the middle: its a container using justify space evenly with 1 child item*/
+    align-items: center;
+    max-width: 600px; 
+    margin: 0 auto; /* optional, centers the container. The first parameter 0 indicates that the top and bottom margins will both be set to 0. Specifying auto as the second parameter basically tells the browser to automatically determine the left and right margins itself, which it does by setting them equally. */
+
+}
+
+.profileImageCard{
+    width: 95%;
+    
+    aspect-ratio: 5.5 / 6.5;
+    border-radius: 2vmin;
+    /* min-width: 350px; */
+    background: black; /* linear-gradient(165deg, rgba(96, 30, 50, 1) 0%, rgba(11, 238, 61, .55) 100%); */
+}
+
+
+.likesAndFriends {
+    display: flex;
+    justify-content: space-between;
+    padding-left: 4%;
+    padding-right: 4%;
+}
+.likeAndFriendsButtons{
+    display: inline-block;
+    outline: none;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+
+
+.socialMediaContainer{
+    /* display: flex;
+    flex-wrap: wrap;
+    align-items: center; */
+    
+    overflow: scroll;
+    white-space: nowrap;
+    height: 52px;
+    width: 100%;
+    /* align-items: center; */
+    text-align: center;
+    /* border: 1px solid black; */
+
+    
+}
+
+.socialMediaCard{
+    /* margin-left: 5px; */
+    /* padding: 10px; */
+    /* padding-bottom: 10px; */
+
+    padding: 2px 5px 2px 5px; /* top right bottom left */
+
+    margin-right: 5px;
+    display: inline-block;
+
+    
+    width: 20%;
+    min-width: 60px;
+    height: 40px;
+    text-align: center;
+    border-radius: 12px;
+    background: black;
+    
+    /* justify-content: space-between; */
+}
+
+.socialMediaIcons{
+    /* vertical-align: bottom; */
+    display: inline-block;
+    margin: 2px;
+    
+}
+
+/* 
+.profileImageCard{
+    width: 95%;
+    
+    aspect-ratio: 5.5 / 6.5;
+    border-radius: 2vmin;
+    
+    background: black; 
+} */
+
+.bioCard{
+    width: 95%;
+    
+    aspect-ratio: 5.5 / 6.5;
+    border-radius: 2vmin;
+    /* min-width: 350px; */
+    background: rgba(255, 255, 255, 0.12);
+    /* background: black; */
+    /* backdrop-filter: blur(30px); This messed me up: too computationally expensive!!*/
+    margin-top: 20px;
+}
+
+.bioTextCard{
+    width: 75%;
+    aspect-ratio: 5.5 / 6.5;
+    border-radius: 2vmin;
+    /* background: white; */
+    background: rgba(255, 255, 255, 0.12);
+    margin-top: 20%;
+    margin-left: 12.5%;
+}
+
+
+
+
+
+
+
+.titles{
+    position: absolute;
+    top: 5%;
+    left: 17.5%;
+}
+
