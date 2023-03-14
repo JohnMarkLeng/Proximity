@@ -51,7 +51,7 @@ class Dashboard extends Component {
         let element = this.myNavRef.current;
         // let home = document.getElementById('Homepage')
         if (element ) {
-            ReactDOM.findDOMNode(element).style.width = this.state.sideMenu? '100%' : '0%'
+            element.style.width = this.state.sideMenu? '100%' : '0%'
             document.body.style.backgroundColor = this.state.homeBlur? 'rgba(100,200,10,1)' : ''
         }
         // ReactDOM.findDOMNode(home).style.backgroundColor = this.state.homeBlur? 'rgba(0,0,0,0.4)' : ''
@@ -163,8 +163,12 @@ class Dashboard extends Component {
                 <button onClick={this.leftClick} className={styles.button} >
                     <FontAwesomeIcon icon={faAngleLeft} style={{fontSize: 50, color: "#FFF"}} className={styles.buttonIcons} />
                 </button>
-            
-                <UserProfile userInfo={this.state.users} index={this.state.currentIndex} className={styles.card} > </UserProfile>
+                
+                {this.state.users && (
+                < UserProfile userInfo={this.state.users} index={this.state.currentIndex} className={styles.card} > </UserProfile>
+                )}
+                
+                
                 
                 <button onClick={this.rightClick} className={styles.button} >
                     <FontAwesomeIcon icon={faAngleRight} style={{fontSize: 50, color: "#FFF"}} className={styles.buttonIcons} />
