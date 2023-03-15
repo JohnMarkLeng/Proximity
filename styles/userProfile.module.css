@@ -34,7 +34,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    border-radius: 50%;
+    border-radius: 10%;
     cursor: pointer;
     color: white;
 }
@@ -90,8 +90,8 @@
     /* align-items: center; */
     text-align: center;
     /* border: 1px solid black; */
+    margin-bottom: 20px;
 
-    
 }
 
 .socialMediaCard{
@@ -115,11 +115,20 @@
     /* justify-content: space-between; */
 }
 
+.socialMediaButton{
+    width: 100%;
+    height: 100%;
+    outline: none;
+    border: none;
+    background-color: transparent;
+    border-radius: 12px;
+    cursor: pointer;
+}
+
 .socialMediaIcons{
     /* vertical-align: bottom; */
     display: inline-block;
     margin: 2px;
-    
 }
 
 /* 
@@ -132,28 +141,65 @@
     background: black; 
 } */
 
+
+.TextCard{
+    width: 70%;
+    aspect-ratio: 5.5 / 6.5;
+    border-radius: 2vmin;
+    /* background: white; */
+    background: rgba(255, 255, 255, 0.12);
+    margin-top: 17%;
+    margin-bottom: 10%;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 5% 5% 5% 5%;
+    overflow-y: auto;
+    
+}
+
 .bioCard{
     width: 95%;
-    
     aspect-ratio: 5.5 / 6.5;
     border-radius: 2vmin;
     /* min-width: 350px; */
     background: rgba(255, 255, 255, 0.12);
     /* background: black; */
     /* backdrop-filter: blur(30px); This messed me up: too computationally expensive!!*/
-    margin-top: 20px;
+    margin-bottom: 20px;
+    
 }
 
-.bioTextCard{
-    width: 75%;
-    aspect-ratio: 5.5 / 6.5;
+
+
+.bioText{
+    font-size: 3vb;
+}
+
+
+.hobbySubtitleCover{
+    background:rgb(38, 38, 38);
     border-radius: 2vmin;
-    /* background: white; */
-    background: rgba(255, 255, 255, 0.12);
-    margin-top: 20%;
-    margin-left: 12.5%;
+    display: inline-block;
+    position: relative;
+    top: 0%;
+    left: 5%;
+    font-size: 2.5vb;
+    padding: 2px 5% 3px 5%;
 }
 
+.hobbyDescription{
+    font-size: 3vb;
+    margin-top: 4%;
+    margin-bottom: 8%;
+    margin-left: 3%;
+}
+
+.goalsText{
+    font-size: 3vb;
+    margin-top: 4%;
+    margin-bottom: 8%;
+    margin-left: 3%;
+}
 
 
 
@@ -161,8 +207,12 @@
 
 
 .titles{
+    font-size: 3vb;
     position: absolute;
-    top: 5%;
+    top: 0%;
     left: 17.5%;
 }
 
+.subTitles{
+
+}
