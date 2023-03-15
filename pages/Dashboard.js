@@ -67,7 +67,7 @@ class Dashboard extends Component {
 
     getUsers = async () => {
 
-        let res = await fetch("https://proximityapp.vercel.app/api/getUsers", {
+        let res = await fetch("https://proximityapp.vercel.app/api/getUsers", { // http://localhost:3000/api/getUsers
         method: "GET",
         headers: {
         "Content-Type": "application/json",
