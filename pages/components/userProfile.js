@@ -233,7 +233,7 @@ export default function UserProfile(props) {
                     <div className={styles.CardContainer}>   
                         <div className={styles.bioCard}>
                             <div className={styles.titles} >
-                                <h3>I'm Down To... </h3>
+                                <h3>I&apos;m Down To... </h3>
                             </div>
                             <div className={styles.TextCard}>
                                 {currentUser.DownTo1.trim() && (
