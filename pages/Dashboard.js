@@ -58,7 +58,7 @@ class Dashboard extends Component {
     }
 
     leftClick = () => {
-        this.setState({currentIndex: 1})
+        // this.setState({currentIndex: 1})
     }
     rightClick = () => {
         this.setState({currentIndex: 0})
