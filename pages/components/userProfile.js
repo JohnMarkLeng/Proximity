@@ -87,42 +87,42 @@ export default function UserProfile(props) {
                         
                         {currentUser.instagram.trim() && (
                                     <div className={styles.socialMediaCard}>
-                                        <button className={styles.socialMediaButton}>
+                                        <button value={currentUser.instagram} className={styles.socialMediaButton}>
                                         <FontAwesomeIcon icon={faInstagram} style={{fontSize: 35, color: "#FFF"}} className={styles.socialMediaIcons}/>
                                         </button>
                                     </div>
                         )}
                         {currentUser.linkedin.trim() && (
                                     <div className={styles.socialMediaCard}>
-                                        <button className={styles.socialMediaButton}>
+                                        <button value={currentUser.linkedin} className={styles.socialMediaButton}>
                                         <FontAwesomeIcon icon={faLinkedin} style={{fontSize: 35, color: "#FFF"}} className={styles.socialMediaIcons}/> 
                                         </button>
                                     </div>
                         )}
                         {currentUser.snapchat.trim() && (
                                     <div className={styles.socialMediaCard}>
-                                        <button className={styles.socialMediaButton}>
+                                        <button value={currentUser.snapchat} className={styles.socialMediaButton}>
                                         <FontAwesomeIcon icon={faSnapchat} style={{fontSize: 35, color: "#FFF"}} className={styles.socialMediaIcons}/> 
                                         </button>
                                     </div>
                         )}
                         {currentUser.twitter.trim() && (
                                     <div className={styles.socialMediaCard}>
-                                        <button className={styles.socialMediaButton}>
+                                        <button value={currentUser.twitter} className={styles.socialMediaButton}>
                                         <FontAwesomeIcon icon={faTwitter} style={{fontSize: 35, color: "#FFF"}} className={styles.socialMediaIcons}/> 
                                         </button>
                                     </div>
                         )}
                         {currentUser.youtube.trim() && (
                                     <div className={styles.socialMediaCard}>
-                                        <button className={styles.socialMediaButton}>
+                                        <button value={currentUser.youtube} className={styles.socialMediaButton}>
                                         <FontAwesomeIcon icon={faYoutube} style={{fontSize: 35, color: "#FFF"}} className={styles.socialMediaIcons}/> 
                                         </button>
                                     </div>
                         )}
                         {currentUser.tiktok.trim() && (
                                     <div className={styles.socialMediaCard}>
-                                        <button className={styles.socialMediaButton}>
+                                        <button value={currentUser.tiktok} className={styles.socialMediaButton}>
                                         <FontAwesomeIcon icon={faTiktok} style={{fontSize: 35, color: "#FFF"}} className={styles.socialMediaIcons}/> 
                                         </button>
                                     </div>
@@ -147,7 +147,7 @@ export default function UserProfile(props) {
 
                     </div>
 
-                    {/* Hobbies */} {/* Mandatory 3 hobbies. Require Resc and Title Or profile won't be visible */}
+                    {/* Hobbies */} {/* Mandatory 3 hobbies. Require Resc and Title Or profile wont be visible */}
                     <div className={styles.CardContainer}>   
                         <div className={styles.bioCard}>
                             <div className={styles.titles} >
@@ -229,7 +229,7 @@ export default function UserProfile(props) {
                     )}
 
 
-                    {/* I'm Down to...  */} {/* Required!.  3 at minimum or profile not visible? */}
+                    {/* Im Down to...  */} {/* Required!.  3 at minimum or profile not visible? */}
                     <div className={styles.CardContainer}>   
                         <div className={styles.bioCard}>
                             <div className={styles.titles} >
