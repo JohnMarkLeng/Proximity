@@ -39,6 +39,16 @@
     color: white;
 }
 
+.topContainerButtonsCover{
+    background:rgba(255, 255, 255, 0.20);
+    border-radius: 2vmin;
+    /* display: inline-block; */
+    position: relative;
+    /* font-size: 2.5vb; */
+    
+    padding: 0px 10px 0px 10px;
+}
+
 /* container for all cards. */
 .CardContainer{
 

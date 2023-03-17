@@ -9,11 +9,13 @@ import Router from 'next/router';
 import { getAuth, signOut } from "firebase/auth";
 import logo from '../public/proximityLogo.png';
 import UserProfile from '@/pages/components/userProfile'
+import SelfProfile from './components/selfProfile';
 import ReactDOM from 'react-dom';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {faAngleRight, faAngleLeft, faBars, faArrowRightFromBracket} from '@fortawesome/free-solid-svg-icons';
 
+//CHange get users to also get the current user? nah make a diff endpoint
 
 class Dashboard extends Component {
 
@@ -25,11 +27,14 @@ class Dashboard extends Component {
 
         this.state = {
             users: [],
-            user: [],
-            count: 0,
             currentIndex: 0,
+            self: [],
+            selfIndex: 0,
             sideMenu: false, 
             homeBlur: false,
+            viewUserProfiles: true,
+            viewProfile: false,
+            editProfile: false,
 
         };
 
@@ -42,19 +47,29 @@ class Dashboard extends Component {
     //     this.setState({ count: this.state.count + 1 });
     // };
 
-    menuClick = () => {
-        this.setState({sideMenu: !this.state.sideMenu})
-        this.setState({homeBlur: !this.state.homeBlur})
-        // this.state.sideMenu = !this.state.sideMenu
-        // this.state.homeBlur = !this.state.homeBlur
-        // let element = document.getElementById('myNav')
+    revealMenu = () => {
         let element = this.myNavRef.current;
+        console.log(element, this.state.sideMenu)
         // let home = document.getElementById('Homepage')
         if (element ) {
             element.style.width = this.state.sideMenu? '100%' : '0%'
             document.body.style.backgroundColor = this.state.homeBlur? 'rgba(100,200,10,1)' : ''
         }
         // ReactDOM.findDOMNode(home).style.backgroundColor = this.state.homeBlur? 'rgba(0,0,0,0.4)' : ''
+    }
+
+    menuClick = () => {
+        console.log('menu Clicked')
+        this.setState({
+            sideMenu: !this.state.sideMenu,
+            homeBlur: !this.state.homeBlur
+        },
+        this.revealMenu
+        
+        )
+        // this.state.sideMenu = !this.state.sideMenu
+        // this.state.homeBlur = !this.state.homeBlur
+        // let element = document.getElementById('myNav')
     }
 
     leftClick = () => {
@@ -64,10 +79,37 @@ class Dashboard extends Component {
         this.setState({currentIndex: 0})
     }
 
+    viewUsersClick = () => {
+        console.log("clicked view users")
+        this.setState({
+            viewUserProfiles: true,
+            viewProfile: false, 
+            editProfile: false 
+        })
+    }
+
+    viewProfileClick = () => {
+        this.menuClick()
+        this.setState({
+            viewUserProfiles: false,
+            viewProfile: true, 
+            editProfile: false 
+        })
+        console.log("dashboard: the current user's array: ", this.state.self)
+    }
+
+    editProfileClick = () => {
+        this.setState({
+            viewUserProfiles: false,
+            viewProfile: false, 
+            editProfile: true 
+        })
+    }
+
 
     getUsers = async () => {
 
-        let res = await fetch("https://proximityapp.vercel.app/api/getUsers", { // http://localhost:3000/api/getUsers 'https://proximityapp.vercel.app/api/getUsers'
+        let res = await fetch("http://localhost:3000/api/getUsers", { // http://localhost:3000/api/getUsers 'https://proximityapp.vercel.app/api/getUsers'
         method: "GET",
         headers: {
         "Content-Type": "application/json",
@@ -85,6 +127,25 @@ class Dashboard extends Component {
             Router.push('/register')
         }
     }
+    getSelf = async () => {
+
+        let res = await fetch("http://localhost:3000/api/getSelf", { // http://localhost:3000/api/getSelf 'https://proximityapp.vercel.app/api/getSelf'
+        method: "GET",
+        headers: {
+        "Content-Type": "application/json",
+            
+            },
+        });
+        //   console.log(res)
+        let posts = await res.json();
+        
+        // handle response data (can have error returns and redirect and display msgs)
+        if(posts.status == 200){
+            this.setState({self: posts.data});
+        }else{
+            Router.push('/register')
+        }
+    }
 
     componentDidMount() {
         // let token = localStorage.getItem('Token')
@@ -95,6 +156,7 @@ class Dashboard extends Component {
         //     Router.push('/register')
         // }
         this.getUsers()
+        this.getSelf()
     }
 
 
@@ -125,7 +187,7 @@ class Dashboard extends Component {
             <div id="myNav" className={styles.menuOverlay} ref={this.myNavRef}>
                 <a href="javascript:void(0)" className={styles.closebtn} onClick={this.menuClick}>&times;</a>
                 <div className={styles.menuOverlayContent}>
-                    <a href="#">Profile</a>
+                    <a onClick={this.viewProfileClick}>Profile</a>
                     <a href="#">Location</a>
                     <a href="#">Friends</a>
                     {/* <a href="#">Contact</a> */}
@@ -153,26 +215,34 @@ class Dashboard extends Component {
         
 
 
-
-            {/* {this.state.users.map(user => (
-                    <UserProfile key={user.googleUid} userInfo={user} > </UserProfile>
-            ))} */}
-
-
             <div className={styles.buttonAndProfileContainer}>
+                {this.state.users && this.state.viewUserProfiles && (
                 <button onClick={this.leftClick} className={styles.button} >
                     <FontAwesomeIcon icon={faAngleLeft} style={{fontSize: 50, color: "#FFF"}} className={styles.buttonIcons} />
                 </button>
-                
-                {this.state.users && (
-                < UserProfile userInfo={this.state.users} index={this.state.currentIndex} className={styles.card} > </UserProfile>
                 )}
                 
+                {/* Users */}
+                {this.state.users && this.state.viewUserProfiles && (
+                < UserProfile userInfo={this.state.users} index={this.state.currentIndex} className={styles.card} > </UserProfile>
+                )}
+
+                {/* View Profile */}
+                {this.state.self && this.state.viewProfile && (
+                < SelfProfile viewUsersClick={this.viewUsersClick} userInfo={this.state.self} index={this.state.selfIndex} className={styles.card} > </SelfProfile>
+                )}
+
+                {/* { !this.state.viewUserProfiles && this.state.viewProfile && (
                 
+                )}  */}
+
                 
-                <button onClick={this.rightClick} className={styles.button} >
+                {this.state.users && this.state.viewUserProfiles && (
+                 <button onClick={this.rightClick} className={styles.button} >
                     <FontAwesomeIcon icon={faAngleRight} style={{fontSize: 50, color: "#FFF"}} className={styles.buttonIcons} />
-                </button>
+                 </button>
+                )}
+               
 
             </div>
         
