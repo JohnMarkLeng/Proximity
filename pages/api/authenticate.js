@@ -8,7 +8,7 @@ import {withIronSession} from 'next-iron-session';
 async function handler(req, res) {
 
     try{
-      console.log("authenticate body:", req)
+      // console.log("authenticate body:", req)
       const user = await req.session.get('user'); // the user specific cookie is sent with the request. This how they look it up. 
 
       console.log('authenticate: ', user)

@@ -10,8 +10,23 @@ import { faInstagram, faLinkedin, faSnapchat, faTwitter, faYoutube, faTiktok} fr
 
 export default function SelfProfile(props) {
 
-    // const [currentIndex, setCurrentIndex] = useState(0);
+    const [isCopied, setIsCopied] = useState(false);
+    const [errorWithCopy, setErrorWithCopy] = useState(false);
     
+    function socialMediaPopup(username){
+        console.log("value: ",username)
+        navigator.clipboard.writeText(username)
+        .then(() => {
+            setIsCopied(true);
+            setTimeout(() => setIsCopied(false), 2000);
+        })
+        .catch((err) => { 
+            console.error('Failed to copy text: ', err)
+            setErrorWithCopy(true);
+            setTimeout(() => setErrorWithCopy(false), 3000);
+        });
+    }
+
     if (props && props.userInfo){
         const currentUser = props.userInfo[props.index];
         console.log('userprofile props', props , 'Current User:', currentUser)
@@ -44,7 +59,7 @@ export default function SelfProfile(props) {
                         
                         
                         <button className={styles.topContainerButtons}>
-                            <div className={styles.topContainerButtonsCover} onClick={() => props.viewUsersClick() }> <h3>Edit</h3> </div>
+                            <div className={styles.topContainerButtonsCover} onClick={() => props.editProfileClick() }> <h3>Edit</h3> </div>
                         </button>
 
                     </div>
@@ -52,7 +67,7 @@ export default function SelfProfile(props) {
                     {/* Profile image */}
                     <div className={styles.CardContainer}>
                         <div className={styles.profileImageCard}>
-
+                            <img className={styles.profileImage} src={currentUser.profilePic1} alt='User Profile Image' />
                         </div>
 
                     </div>
@@ -64,7 +79,7 @@ export default function SelfProfile(props) {
                             className={styles.likeAndFriendsButtons}
                             // onClick={}
                             >
-                                <h3><FontAwesomeIcon icon={faHeart} style={{ color: "#FFF"}}/></h3>
+                                <h3><FontAwesomeIcon icon={faHeart} style={{ fontSize: 20, color: "#FFF"}}/></h3>
                             </button>
 
                             {/* <button 
@@ -88,42 +103,42 @@ export default function SelfProfile(props) {
                         
                         {currentUser.instagram.trim() && (
                                     <div className={styles.socialMediaCard}>
-                                        <button value={currentUser.instagram} className={styles.socialMediaButton}>
+                                        <button value={currentUser.instagram} onClick={(event) => {socialMediaPopup(event.currentTarget.value)}} className={styles.socialMediaButton}>
                                         <FontAwesomeIcon icon={faInstagram} style={{fontSize: 35, color: "#FFF"}} className={styles.socialMediaIcons}/>
                                         </button>
                                     </div>
                         )}
                         {currentUser.linkedin.trim() && (
                                     <div className={styles.socialMediaCard}>
-                                        <button value={currentUser.linkedin} className={styles.socialMediaButton}>
+                                        <button value={currentUser.linkedin} onClick={(event) => {socialMediaPopup(event.currentTarget.value)}} className={styles.socialMediaButton}>
                                         <FontAwesomeIcon icon={faLinkedin} style={{fontSize: 35, color: "#FFF"}} className={styles.socialMediaIcons}/> 
                                         </button>
                                     </div>
                         )}
                         {currentUser.snapchat.trim() && (
                                     <div className={styles.socialMediaCard}>
-                                        <button value={currentUser.snapchat} className={styles.socialMediaButton}>
+                                        <button value={currentUser.snapchat} onClick={(event) => {socialMediaPopup(event.currentTarget.value)}} className={styles.socialMediaButton}>
                                         <FontAwesomeIcon icon={faSnapchat} style={{fontSize: 35, color: "#FFF"}} className={styles.socialMediaIcons}/> 
                                         </button>
                                     </div>
                         )}
                         {currentUser.twitter.trim() && (
                                     <div className={styles.socialMediaCard}>
-                                        <button value={currentUser.twitter} className={styles.socialMediaButton}>
+                                        <button value={currentUser.twitter} onClick={(event) => {socialMediaPopup(event.currentTarget.value)}} className={styles.socialMediaButton}>
                                         <FontAwesomeIcon icon={faTwitter} style={{fontSize: 35, color: "#FFF"}} className={styles.socialMediaIcons}/> 
                                         </button>
                                     </div>
                         )}
                         {currentUser.youtube.trim() && (
                                     <div className={styles.socialMediaCard}>
-                                        <button value={currentUser.youtube} className={styles.socialMediaButton}>
+                                        <button value={currentUser.youtube} onClick={(event) => {socialMediaPopup(event.currentTarget.value)}} className={styles.socialMediaButton}>
                                         <FontAwesomeIcon icon={faYoutube} style={{fontSize: 35, color: "#FFF"}} className={styles.socialMediaIcons}/> 
                                         </button>
                                     </div>
                         )}
                         {currentUser.tiktok.trim() && (
                                     <div className={styles.socialMediaCard}>
-                                        <button value={currentUser.tiktok} className={styles.socialMediaButton}>
+                                        <button value={currentUser.tiktok} onClick={(event) => {socialMediaPopup(event.currentTarget.value)}} className={styles.socialMediaButton}>
                                         <FontAwesomeIcon icon={faTiktok} style={{fontSize: 35, color: "#FFF"}} className={styles.socialMediaIcons}/> 
                                         </button>
                                     </div>
@@ -260,6 +275,9 @@ export default function SelfProfile(props) {
                         </div>
                         
                     </div>
+
+                    {isCopied && (<div className={styles.socialMediaCopiedPopupContainer}> <div className={styles.socialMediaCopiedPopup}>Copied!</div></div>)}
+                    {errorWithCopy && (<div className={styles.socialMediaCopiedPopupContainer}> <div className={styles.socialMediaCopiedPopup}>Error!</div></div>)}
 
                     {/* I Would like to learn to ...  */}
                     {/* <div className={styles.CardContainer}>   

@@ -55,7 +55,7 @@ async function handler(req, res) {
 
         if(profile.length === 0){ 
             //create account!
-            const newUser = { googleUid: uid, visible: false, fName: '', lName:'', email: email,  profilePic:'', likes: 0, friends: 0, instagram:'', linkedin:'',
+            const newUser = { googleUid: uid, visible: false, fName: '', lName:'', email: email,  profilePic1:'', profilePic2:'', profilePic3:'', likes: 0, friends: 0, instagram:'', linkedin:'',
             snapchat:'', youtube:'', twitter:'', tiktok:'', bio:'', education:'', studying:'', hobby1:'', hobby1Desc:'', hobby2:'', hobby2Desc:'', hobby3:'',
             hobby3Desc:'', hobby4:'', hobby4Desc:'', hobby5:'', hobby5Desc:'', DownTo1: '', DownTo2: '', DownTo3: '', DownTo4: '', DownTo5: '', Learn1: '', Learn2: '', Learn3: '',
             Goal1: '', Goal2: '', Goal3: '', dateJoined: new Date(), lastOnline: new Date(), banned: false, geoJsonLocation: { type: 'Point', coordinates: [ 0, 0 ] }, };

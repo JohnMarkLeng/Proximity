@@ -10,6 +10,9 @@ import { getAuth, signOut } from "firebase/auth";
 import logo from '../public/proximityLogo.png';
 import UserProfile from '@/pages/components/userProfile'
 import SelfProfile from './components/selfProfile';
+import EditProfile from './components/editProfile';
+import LocationSelector from './components/locationSelector';
+
 import ReactDOM from 'react-dom';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -35,6 +38,7 @@ class Dashboard extends Component {
             viewUserProfiles: true,
             viewProfile: false,
             editProfile: false,
+            locationSelector: false,
 
         };
 
@@ -52,7 +56,7 @@ class Dashboard extends Component {
         console.log(element, this.state.sideMenu)
         // let home = document.getElementById('Homepage')
         if (element ) {
-            element.style.width = this.state.sideMenu? '100%' : '0%'
+            element.style.width = this.state.sideMenu? '25%' : '0%'
             document.body.style.backgroundColor = this.state.homeBlur? 'rgba(100,200,10,1)' : ''
         }
         // ReactDOM.findDOMNode(home).style.backgroundColor = this.state.homeBlur? 'rgba(0,0,0,0.4)' : ''
@@ -65,7 +69,6 @@ class Dashboard extends Component {
             homeBlur: !this.state.homeBlur
         },
         this.revealMenu
-        
         )
         // this.state.sideMenu = !this.state.sideMenu
         // this.state.homeBlur = !this.state.homeBlur
@@ -84,16 +87,27 @@ class Dashboard extends Component {
         this.setState({
             viewUserProfiles: true,
             viewProfile: false, 
-            editProfile: false 
+            editProfile: false,
+            locationSelector: false,
         })
     }
 
-    viewProfileClick = () => {
+    viewProfileClick_MenuClick = () => {
         this.menuClick()
         this.setState({
             viewUserProfiles: false,
             viewProfile: true, 
-            editProfile: false 
+            editProfile: false,
+            locationSelector: false,
+        })
+        console.log("dashboard: the current user's array: ", this.state.self)
+    }
+    viewProfileClick = () => {
+        this.setState({
+            viewUserProfiles: false,
+            viewProfile: true, 
+            editProfile: false,
+            locationSelector: false,
         })
         console.log("dashboard: the current user's array: ", this.state.self)
     }
@@ -102,7 +116,17 @@ class Dashboard extends Component {
         this.setState({
             viewUserProfiles: false,
             viewProfile: false, 
-            editProfile: true 
+            editProfile: true,
+            locationSelector: false,
+        })
+    }
+    editLocation_MenuClick = () => {
+        this.menuClick()
+        this.setState({
+            viewUserProfiles: false,
+            viewProfile: false, 
+            editProfile: false,
+            locationSelector: true, 
         })
     }
 
@@ -187,9 +211,9 @@ class Dashboard extends Component {
             <div id="myNav" className={styles.menuOverlay} ref={this.myNavRef}>
                 <a href="javascript:void(0)" className={styles.closebtn} onClick={this.menuClick}>&times;</a>
                 <div className={styles.menuOverlayContent}>
-                    <a onClick={this.viewProfileClick}>Profile</a>
-                    <a href="#">Location</a>
-                    <a href="#">Friends</a>
+                    <a onClick={this.viewProfileClick_MenuClick}>Profile</a>
+                    <a onClick={this.editLocation_MenuClick}>Location</a>
+                    {/* <a href="#">Friends</a> */}
                     {/* <a href="#">Contact</a> */}
                 </div>
     
@@ -229,13 +253,18 @@ class Dashboard extends Component {
 
                 {/* View Profile */}
                 {this.state.self && this.state.viewProfile && (
-                < SelfProfile viewUsersClick={this.viewUsersClick} userInfo={this.state.self} index={this.state.selfIndex} className={styles.card} > </SelfProfile>
+                < SelfProfile viewUsersClick={this.viewUsersClick} editProfileClick={this.editProfileClick} userInfo={this.state.self} index={this.state.selfIndex} className={styles.card} > </SelfProfile>
                 )}
 
-                {/* { !this.state.viewUserProfiles && this.state.viewProfile && (
-                
-                )}  */}
+                {/* Edit Profile */}
+                { this.state.self && this.state.editProfile && (
+                < EditProfile viewProfileClick={this.viewProfileClick} getSelf={this.getSelf} userInfo={this.state.self} index={this.state.selfIndex} className={styles.card} > </EditProfile>
+                )} 
 
+                {/* Location Selector */}
+                { this.state.self && this.state.locationSelector && (
+                <LocationSelector viewUsersClick={this.viewUsersClick} viewProfileClick={this.viewProfileClick} userInfo={this.state.self} index={this.state.selfIndex} className={styles.card}></LocationSelector>
+                )} 
                 
                 {this.state.users && this.state.viewUserProfiles && (
                  <button onClick={this.rightClick} className={styles.button} >

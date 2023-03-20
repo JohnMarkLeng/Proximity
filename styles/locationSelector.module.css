@@ -1,0 +1,61 @@
+
+
+.profileCard{
+    
+    width: 60vmin;
+    aspect-ratio: 5.5 / 7.5;
+    border-radius: 2vmin;
+    min-width: 350px;
+    /* background-color: red; */
+    background: linear-gradient(165deg, rgba(96, 30, 50, 1) 0%, rgba(11, 238, 61, .55) 100%);
+    /* position: relative; */
+    /* top: 50%;
+    left: 50%; */
+
+    /* transform: translateX(-50%); */
+    /* text-align: center; */
+    /* overflow-x: hidden; */
+
+    overflow-y: auto;
+    padding-left:  2%;
+    padding-right:  2%;
+}
+
+
+.topContainer{
+    display: flex;
+    justify-content: space-between;
+}
+
+.topContainerButtons {
+    outline: none;
+    border: none;
+    background-color: transparent;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10%;
+    cursor: pointer;
+    color: white;
+}
+
+.topContainerButtonsCover{
+    background:rgba(255, 255, 255, 0.20);
+    border-radius: 2vmin;
+    /* display: inline-block; */
+    position: relative;
+    /* font-size: 2.5vb; */
+    
+    padding: 0px 10px 0px 10px;
+}
+
+
+.mapContainer{
+    /* border:2px solid black; */
+    border-radius: 2vmin;
+    height: 70%;
+    width: 100%;
+    overflow: hidden;
+}
+
+

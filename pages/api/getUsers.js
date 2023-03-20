@@ -2,10 +2,6 @@
 //I'll need to work on parameters for filtering and how to use them with mongo and interface it. 
 
 
-//Todo now: 
-//authenticate the request first, then with a status 200, send that data, or send to login again. 
-//work on displaying users without filtering. just display in a UI
-
 import {withIronSession} from 'next-iron-session';
 import clientPromise from "../../lib/mongodb";
 
