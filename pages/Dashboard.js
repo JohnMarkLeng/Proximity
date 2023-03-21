@@ -4,7 +4,6 @@ import Image from 'next/image'
 import { Inter } from '@next/font/google'
 import styles from '@/styles/Home.module.css'
 import { app } from '../firebaseConfig'
-import {useEffect} from 'react';
 import Router from 'next/router';
 import { getAuth, signOut } from "firebase/auth";
 import logo from '../public/proximityLogo.png';
@@ -22,8 +21,6 @@ import {faAngleRight, faAngleLeft, faBars, faArrowRightFromBracket} from '@forta
 
 class Dashboard extends Component {
 
-    
-
     constructor(props) {
         
         super(props);
@@ -39,10 +36,31 @@ class Dashboard extends Component {
             viewProfile: false,
             editProfile: false,
             locationSelector: false,
+            isUnder600: false,
 
         };
 
+        this.handleResize = this.handleResize.bind(this);
         this.myNavRef = React.createRef();
+    }
+
+    componentDidMount() {
+        window.addEventListener('resize', this.handleResize); // listen for resize events
+        this.handleResize(); // check initial window width
+        this.getUsers()
+        this.getSelf()
+    }
+
+    componentWillUnmount() {
+        window.removeEventListener('resize', this.handleResize); // clean up event listener
+    }
+
+    handleResize() {
+        if (window.innerWidth < 600) {
+        this.setState({ isUnder600: true });
+        } else {
+        this.setState({ isUnder600: false });
+        }
     }
 
     
@@ -179,18 +197,6 @@ class Dashboard extends Component {
         }
     }
 
-    componentDidMount() {
-        // let token = localStorage.getItem('Token')
-        // let uid = localStorage.getItem('uid')
-        // this.setState({ AuthToken: token});
-        // this.setState({ uid: uid});
-        // if(!token){
-        //     Router.push('/register')
-        // }
-        this.getUsers()
-        this.getSelf()
-    }
-
 
 
     //Move to its own component in components. remember to delete the proximity cookie. 
@@ -235,7 +241,7 @@ class Dashboard extends Component {
                 <FontAwesomeIcon icon={faBars} style={{fontSize: 40, color: "#FFF"}} className={styles.menuButton} />
                 </button>
 
-                <Image src={logo} width={350} className={styles.logoDashboard} alt="Proximity Logo" />
+                <Image src={logo} className={styles.logoDashboard} alt="Proximity Logo" />
 
 
                 <button
@@ -248,7 +254,8 @@ class Dashboard extends Component {
 
 
             <div className={styles.buttonAndProfileContainer}>
-                {this.state.users && this.state.viewUserProfiles && (
+                {/* Left Click */}
+                { !this.state.isUnder600 && this.state.users && this.state.viewUserProfiles &&  (
                 <button onClick={this.leftClick} className={styles.button} >
                     <FontAwesomeIcon icon={faAngleLeft} style={{fontSize: 50, color: "#FFF"}} className={styles.buttonIcons} />
                 </button>
@@ -273,7 +280,8 @@ class Dashboard extends Component {
                 <LocationSelector viewUsersClick={this.viewUsersClick} viewProfileClick={this.viewProfileClick} userInfo={this.state.self} index={this.state.selfIndex} className={styles.card}></LocationSelector>
                 )}  */}
                 
-                {this.state.users && this.state.viewUserProfiles && (
+                {/* Right Click */}
+                {!this.state.isUnder600 && this.state.users && this.state.viewUserProfiles && (
                  <button onClick={this.rightClick} className={styles.button} >
                     <FontAwesomeIcon icon={faAngleRight} style={{fontSize: 50, color: "#FFF"}} className={styles.buttonIcons} />
                  </button>
@@ -282,7 +290,20 @@ class Dashboard extends Component {
 
             </div>
         
-        
+            <div className={styles.under600ButtonContainer}>
+                {/* Left Click */}
+                { this.state.isUnder600 && this.state.users && this.state.viewUserProfiles &&  (
+                <button onClick={this.leftClick} className={styles.button} >
+                    <FontAwesomeIcon icon={faAngleLeft} style={{fontSize: 50, color: "#FFF"}} className={styles.buttonIcons} />
+                </button>
+                )}
+                {/* Right Click */}
+                {this.state.isUnder600 && this.state.users && this.state.viewUserProfiles && (
+                <button onClick={this.rightClick} className={styles.button} >
+                    <FontAwesomeIcon icon={faAngleRight} style={{fontSize: 50, color: "#FFF"}} className={styles.buttonIcons} />
+                </button>
+                )}
+            </div>
     
         
 

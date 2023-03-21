@@ -22,11 +22,27 @@ body {
   top: 15px;
   left: 50%;
   transform: translateX(-53%);
+  width: 350px;
 
 }
 
 .logout{
   position: absolute
+}
+
+
+/* Styles for mobile */
+
+@media only screen and (max-width: 600px) {
+
+  .logo {
+    width: 60%;
+    height: 60%;
+  
+    margin: 10px auto;
+  }
+
+
 }
 
 
