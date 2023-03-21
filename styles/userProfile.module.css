@@ -27,6 +27,11 @@
     justify-content: space-between;
 }
 
+.UserProfilesTopContainer{
+    display: flex;
+    justify-content: center;
+}
+
 .topContainerButtons {
     outline: none;
     border: none;
@@ -69,6 +74,9 @@
     /* min-width: 350px; */
     /* max-height:400px; */
     background: black; /* linear-gradient(165deg, rgba(96, 30, 50, 1) 0%, rgba(11, 238, 61, .55) 100%); */
+    background-size: cover;
+    margin: none;
+    padding: none;
     overflow:hidden;
 }
 
@@ -109,6 +117,7 @@
     text-align: center;
     /* border: 1px solid black; */
     margin-bottom: 20px;
+    margin-top: 20px;
 
 }
 

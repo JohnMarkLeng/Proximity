@@ -47,21 +47,20 @@ export default function UserProfile(props) {
                 <div className={styles.profileCard} >
 
                     {/* Filter, Name, Button */}
-                    <div className={styles.topContainer}>
-                        <button className={styles.topContainerButtons}
+                    <div className={styles.UserProfilesTopContainer}>
+                        {/* <button className={styles.topContainerButtons}
                         // onClick={this.menuClick}
                         >
-                            {/* <FontAwesomeIcon icon={faBars} style={{fontSize: 40, color: "#FFF"}} className={styles.getUserButton} /> */}
                             <h3>Filter</h3>
-                        </button>
+                        </button> */}
 
                         <h2>
                             {currentUser.fName}
                         </h2>
                         
-                        <button className={styles.topContainerButtons}>
+                        {/* <button className={styles.topContainerButtons}>
                             <h3>Flag</h3>
-                        </button>
+                        </button> */}
 
                     </div>
 
@@ -74,7 +73,7 @@ export default function UserProfile(props) {
                     </div>
 
                     {/* Likes and friends */}
-                    <div className={styles.likesAndFriends}>
+                    {/* <div className={styles.likesAndFriends}>
                         <div>
                             <button 
                             className={styles.likeAndFriendsButtons}
@@ -83,21 +82,21 @@ export default function UserProfile(props) {
                                 <h3><FontAwesomeIcon icon={faHeart} style={{ fontSize: 20, color: "#FFF"}}/></h3>
                             </button>
 
-                            {/* <button 
+                            <button 
                             className={styles.likeAndFriendsButtons} 
                             style={{marginLeft:'10px',}}
                             // onClick={}
                             >
                                 <h3><FontAwesomeIcon icon={faUserPlus} style={{ color: "#FFF"}}/> </h3>
-                            </button> */}
+                            </button>
                         </div>
                         <div>
                             <h3>
                             {currentUser.likes} likes
-                            {/* {currentUser.friends} friends  */}
+                            {currentUser.friends} friends 
                              </h3>
                         </div>
-                    </div>
+                    </div> */}
 
                     {/* Social Media Scroll (Make infinite) (this feature took forever) */}
                     <div className={styles.socialMediaContainer}>

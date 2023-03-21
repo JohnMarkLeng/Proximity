@@ -73,7 +73,7 @@ export default function SelfProfile(props) {
                     </div>
 
                     {/* Likes and friends */}
-                    <div className={styles.likesAndFriends}>
+                    {/* <div className={styles.likesAndFriends}>
                         <div>
                             <button 
                             className={styles.likeAndFriendsButtons}
@@ -82,21 +82,21 @@ export default function SelfProfile(props) {
                                 <h3><FontAwesomeIcon icon={faHeart} style={{ fontSize: 20, color: "#FFF"}}/></h3>
                             </button>
 
-                            {/* <button 
+                            <button 
                             className={styles.likeAndFriendsButtons} 
                             style={{marginLeft:'10px',}}
                             // onClick={}
                             >
                                 <h3><FontAwesomeIcon icon={faUserPlus} style={{ color: "#FFF"}}/> </h3>
-                            </button> */}
+                            </button>
                         </div>
                         <div>
                             <h3>
                             {currentUser.likes} likes
-                            {/* {currentUser.friends} friends  */}
+                            {currentUser.friends} friends 
                              </h3>
                         </div>
-                    </div>
+                    </div> */}
 
                     {/* Social Media Scroll (Make infinite) (this feature took forever) */}
                     <div className={styles.socialMediaContainer}>

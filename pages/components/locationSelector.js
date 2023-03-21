@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from '../../styles/locationSelector.module.css'
-import {useState, useEffect} from 'react';
+import {useState, useRef, useEffect} from 'react';
 import axios from "axios";
 // import { MapConsumer} from 'react-leaflet';
 
@@ -22,15 +22,17 @@ const useMapEvents = dynamic(() => import('react-leaflet/hooks').then((mod) => m
 
 
 
-export default function LocationSelector(props) {
+export default function LocationSelector(props, { onLocationSelect }) {
     const [latAndLon, setLatAndLon] = useState({
         lat: 40.72683,
         lng: -73.943512,
     });
+    const mapRef = useRef(null);
 
     function MyComponent() {
         const map = useMapEvents({
           click: () => {
+            console.log("CLICKED")
             map.locate()
           },
           locationfound: (location) => {
@@ -38,6 +40,13 @@ export default function LocationSelector(props) {
           },
         })
         return null
+    }
+
+    function MapClickHandler() {
+        useMapEvents({
+          click: handleClick
+        });
+        return null;
     }
 
 
@@ -65,8 +74,15 @@ export default function LocationSelector(props) {
         //     props.viewProfileClick()
         // }
     }
+    const handleMouseMove = (e) => {
+        console.log('Mouse moved:', e.latlng);
+    };
+    const handleMapCreated = (mapInstance) => {
+        mapRef.current = mapInstance;
+        mapInstance.on('click', handleClick);
+    };
 
-    function mapClick(event) {
+    function handleClick(event) {
 		console.log('clicked');
 		console.log(event);
 		let coords = event.latlng;
@@ -125,16 +141,31 @@ export default function LocationSelector(props) {
                             <MapContainer
                                 center={[latAndLon.lat, latAndLon.lng]}
                                 zoom={5}
-                                onClick={(event) => mapClick(event)}
-                                style={{ width: '600px', height: '600px' }}
+                                onClick={handleClick}
+                                doubleClickZoom={false} // disable double-click zoom
+                                onMouseMove={handleMouseMove}
+                                whenCreated={handleMapCreated}
+                                style={{ width: '100%', height: '100%'}} 
                             >
+                                {/* <MyComponent /> */}
+                                
                                 <TileLayer
-                                    onClick={(event) => mapClick(event)}
+                                    onClick={handleClick}
                                     attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
                                     url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                                    // style={{width: '100%'}}
+                                    onMouseMove={handleMouseMove}
                                 />
-                                <MyComponent />
-
+                                <MapClickHandler />
+                        
+                                {/* <Marker
+                                    key={`marker-currentuser`}
+                                    position={[latAndLon.lat, latAndLon.lng]}
+                                >
+                                    <Popup>
+                                        <p>{location.id} </p>
+                                    </Popup>
+                                </Marker> */}
                                 {/* {this.state.locations.length > 0 &&
                                     this.state.locations.map((location) => (
                                         <Marker

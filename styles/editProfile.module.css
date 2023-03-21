@@ -399,6 +399,50 @@
     left: 17.5%;
 }
 
+.LocationPopupContainer{
+    position: fixed;
+    top: 65%;
+    left: 40%;
+    width: 20%;
+    height: 10%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.LocationPopupPopup {
+    background: linear-gradient(45deg, rgb(72, 176, 98) 0%, rgb(11, 162, 238) 100%);
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.locationButtonContainer{
+    display: flex;
+    justify-content: center;
+    /* border:1px solid black; */
+    margin-bottom: 20px;
+    margin-top: 20px;
+    
+    
+}
+
+.locationButton{
+    outline: none;
+    border: none;
+    
+    background-color: transparent;
+    background:rgba(255, 255, 255, 0.20);
+    display: flex;
+    align-items: center;
+    border-radius: 10px;
+    cursor: pointer;
+    color: white;
+    font-size: 18px;
+    margin:  auto;
+    padding: 8px;
+}
+
 /* .subTitles{
 
 } */

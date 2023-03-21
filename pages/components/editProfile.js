@@ -21,9 +21,12 @@ export default function EditProfile(props) {
     // const [stateyoutube, setstateyoutube] = useState();
     // const [statetiktok, setstatetiktok] = useState();
 
+    const [savedLocationPopup, setSavedLocationPopup] = useState(false);
+    const [lonAndLat, setLonAndLat] = useState();
     const [imageOne, setImageOne] = useState();
     const [imageTwo, setImageTwo] = useState();
     const [imageThree, setImageThree] = useState();
+    
 
 
     async function saveUserInfo(e) {
@@ -39,7 +42,8 @@ export default function EditProfile(props) {
         const formJson = Object.fromEntries(formData.entries());
 
         const imagesJson = {}
-        if(imageOne){
+        if(imageOne ){
+            console.log('ImageOne',imageOne)
             imagesJson['profilePic1Name'] = imageOne.name,
             imagesJson['profilePic1Type'] = imageOne.type
 
@@ -59,7 +63,10 @@ export default function EditProfile(props) {
             formJson['profilePic1'] = S3Key;
 
             // setUploadedFile(BUCKET_URL + file.name);
-            // setFile(null);
+            setImageOne(null);
+        }
+        if(lonAndLat){
+            formJson['geoJsonLocation'] = lonAndLat
         }
 
 
@@ -126,6 +133,25 @@ export default function EditProfile(props) {
     //     setstateyoutube(currentUser.youtube)
     //     setstatetiktok(currentUser.tiktok)
     //   }, []);
+
+    useEffect(() => {
+        if (lonAndLat) {
+            setSavedLocationPopup(true);
+            setTimeout(() => setSavedLocationPopup(false), 4000);
+        }
+      }, [lonAndLat]);
+
+    function findMe(event) {
+
+        event.preventDefault();
+		navigator.geolocation.getCurrentPosition((position) => {
+			console.log(position);
+			setLonAndLat({
+                type: "Point",
+                coordinates: [position.coords.longitude, position.coords.latitude]
+			});
+		});
+	}
     
     if (props && props.userInfo){
         const currentUser = props.userInfo[props.index];
@@ -179,7 +205,7 @@ export default function EditProfile(props) {
                         </div>
 
                         {/* Likes and friends */}
-                        <div className={styles.likesAndFriends}>
+                        {/* <div className={styles.likesAndFriends}>
                             <div>
                                 <button 
                                 className={styles.likeAndFriendsButtons}
@@ -188,20 +214,25 @@ export default function EditProfile(props) {
                                     <h3><FontAwesomeIcon icon={faHeart} style={{ fontSize: 20, color: "#FFF"}}/></h3>
                                 </button>
 
-                                {/* <button 
+                                <button 
                                 className={styles.likeAndFriendsButtons} 
                                 style={{marginLeft:'10px',}}
                                 // onClick={}
                                 >
                                     <h3><FontAwesomeIcon icon={faUserPlus} style={{ color: "#FFF"}}/> </h3>
-                                </button> */}
+                                </button>
                             </div>
                             <div>
                                 <h3>
                                 {currentUser.likes} likes
-                                {/* {currentUser.friends} friends  */}
+                                {currentUser.friends} friends 
                                 </h3>
                             </div>
+                        </div> */}
+
+                        {/* Set Location */}
+                        <div className={styles.locationButtonContainer}>
+                            <button className={styles.locationButton} onClick={findMe}> Set My Location </button>
                         </div>
 
                         {/* Social Media Scroll (Make infinite) (this feature took forever) */}
@@ -387,6 +418,8 @@ export default function EditProfile(props) {
                             </div>
                             
                         </div>
+
+                        {savedLocationPopup && (<div className={styles.LocationPopupContainer}> <div className={styles.LocationPopupPopup}> <p1>Location set</p1> <br></br><p1>Please save</p1> </div></div>)}
 
                         {/* I Would like to learn to ...  */}
                         {/* <div className={styles.CardContainer}>   

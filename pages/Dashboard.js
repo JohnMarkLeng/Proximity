@@ -56,7 +56,7 @@ class Dashboard extends Component {
         console.log(element, this.state.sideMenu)
         // let home = document.getElementById('Homepage')
         if (element ) {
-            element.style.width = this.state.sideMenu? '25%' : '0%'
+            element.style.width = this.state.sideMenu? '40%' : '0%'
             document.body.style.backgroundColor = this.state.homeBlur? 'rgba(100,200,10,1)' : ''
         }
         // ReactDOM.findDOMNode(home).style.backgroundColor = this.state.homeBlur? 'rgba(0,0,0,0.4)' : ''
@@ -76,10 +76,18 @@ class Dashboard extends Component {
     }
 
     leftClick = () => {
-        // this.setState({currentIndex: 1})
+        if(this.state.users.length > 0){
+            if(this.state.currentIndex <= 0){
+                let length = this.state.users.length
+                console.log("length users", length)
+                this.setState({currentIndex: length - 1})
+            }else{
+                this.setState({currentIndex: this.state.currentIndex - 1})
+            }
+        }
     }
     rightClick = () => {
-        this.setState({currentIndex: 0})
+        this.setState({currentIndex: (this.state.currentIndex + 1 )% this.state.users.length})
     }
 
     viewUsersClick = () => {
@@ -133,7 +141,7 @@ class Dashboard extends Component {
 
     getUsers = async () => {
 
-        let res = await fetch("https://proximityapp.vercel.app/api/getUsers", { // http://localhost:3000/api/getUsers 'https://proximityapp.vercel.app/api/getUsers'
+        let res = await fetch("https://proximityapp.vercel.app/api/getUsers", { // http://localhost:3000/api/getUsers   https://proximityapp.vercel.app/api/getUsers
         method: "GET",
         headers: {
         "Content-Type": "application/json",
@@ -153,7 +161,7 @@ class Dashboard extends Component {
     }
     getSelf = async () => {
 
-        let res = await fetch("https://proximityapp.vercel.app/api/getSelf", { // http://localhost:3000/api/getSelf 'https://proximityapp.vercel.app/api/getSelf'
+        let res = await fetch("https://proximityapp.vercel.app/api/getSelf", { // http://localhost:3000/api/getSelf   https://proximityapp.vercel.app/api/getSelf
         method: "GET",
         headers: {
         "Content-Type": "application/json",
@@ -212,7 +220,7 @@ class Dashboard extends Component {
                 <a href="javascript:void(0)" className={styles.closebtn} onClick={this.menuClick}>&times;</a>
                 <div className={styles.menuOverlayContent}>
                     <a onClick={this.viewProfileClick_MenuClick}>Profile</a>
-                    <a onClick={this.editLocation_MenuClick}>Location</a>
+                    {/* <a onClick={this.editLocation_MenuClick}>Location</a> */}
                     {/* <a href="#">Friends</a> */}
                     {/* <a href="#">Contact</a> */}
                 </div>
@@ -245,7 +253,6 @@ class Dashboard extends Component {
                     <FontAwesomeIcon icon={faAngleLeft} style={{fontSize: 50, color: "#FFF"}} className={styles.buttonIcons} />
                 </button>
                 )}
-                
                 {/* Users */}
                 {this.state.users && this.state.viewUserProfiles && (
                 < UserProfile userInfo={this.state.users} index={this.state.currentIndex} className={styles.card} > </UserProfile>
@@ -262,9 +269,9 @@ class Dashboard extends Component {
                 )} 
 
                 {/* Location Selector */}
-                { this.state.self && this.state.locationSelector && (
+                {/* { this.state.self && this.state.locationSelector && (
                 <LocationSelector viewUsersClick={this.viewUsersClick} viewProfileClick={this.viewProfileClick} userInfo={this.state.self} index={this.state.selfIndex} className={styles.card}></LocationSelector>
-                )} 
+                )}  */}
                 
                 {this.state.users && this.state.viewUserProfiles && (
                  <button onClick={this.rightClick} className={styles.button} >

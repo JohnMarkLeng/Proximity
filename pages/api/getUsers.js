@@ -25,7 +25,7 @@ async function handler(req, res) {
             const db = client.db("ProximityDatabase");
 
             try{
-                const profiles = await db.collection("UserProfiles").find({}).toArray();
+                const profiles = await db.collection("UserProfiles").find({ visible: { $ne: false } }).toArray();
                 // console.log(profiles)
                 res.json({ status: 200, data: profiles });
             } catch (error){

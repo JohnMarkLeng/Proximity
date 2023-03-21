@@ -58,24 +58,6 @@
 }
 
 
-/* SideNavBar Menu */
-/* body {
-  font-family: "Lato", sans-serif;
-} */
-
-.sidenav {
-  height: 100%;
-  width: 0;
-  position: fixed;
-  z-index: 1;
-  top: 0;
-  left: 0;
-  background-color: #111;
-  overflow-x: hidden;
-  transition: 0.5s;
-  padding-top: 60px;
-}
-
 .menuOverlay {
   height: 100%;
   width: 0;
@@ -83,9 +65,9 @@
   z-index: 1;
   top: 0;
   left: 0;
-  background: rgba(245,245,245,0.1);
+  background: rgba(16, 16, 16, 0.867);
   /* background-Color: rgba(100,200,10,0.15); */
-  backdrop-filter: blur(15px);
+  backdrop-filter: blur(15px); 
   -webkit-backdrop-filter: blur(15px);
 
   

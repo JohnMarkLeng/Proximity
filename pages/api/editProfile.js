@@ -34,9 +34,10 @@ async function handler(req, res) {
                     const data = req.body
 
                     const filter = { googleUid: user.uid };
-                    const updateDoc = { $set: {
+
+                    let updatingUserKeyValues = { 
+                        
                         fName: data.fName.trim(), 
-                        profilePic1: 'https://proximityprofileimages.s3.amazonaws.com/' + data.profilePic1,
                         instagram: data.instagram.trim(), 
                         linkedin: data.linkedin.trim(), 
                         snapchat: data.snapchat.trim(),
@@ -62,8 +63,25 @@ async function handler(req, res) {
                         DownTo3: data.DownTo3.trim(),
                         DownTo4: data.DownTo4.trim(),
                         DownTo5: data.DownTo5.trim(),
+                    };
+                    if(data.profilePic1){
+                        updatingUserKeyValues['profilePic1'] = 'https://proximityprofileimages.s3.amazonaws.com/' + data.profilePic1
+                    }
+                    if(data.geoJsonLocation){
+                        updatingUserKeyValues['geoJsonLocation'] =  data.geoJsonLocation
+                    }
 
-                    } };
+                    //Checks if the profile is valid and makes it visible.
+                    if(  ( (data.fName.trim()) || (data.profilePic1) ||(data.Bio.trim() )  ) && (
+                            (data.hobby1.trim() || data.hobby2.trim() || data.hobby3.trim()) ||
+                            (data.Goal1.trim() || data.Goal2.trim() || data.Goal2.trim()) ||
+                            (data.DownTo1.trim() || data.DownTo2.trim() || data.DownTo3.trim() || data.DownTo4.trim() || data.DownTo5.trim())
+                        )
+                    ){
+                        updatingUserKeyValues['visible'] = true
+                    }
+
+                    const updateDoc = { $set: updatingUserKeyValues };
 
                     const result = await db.collection("UserProfiles").updateOne(filter, updateDoc);
                     // console.log(profiles)
