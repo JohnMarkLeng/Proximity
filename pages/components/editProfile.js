@@ -47,7 +47,7 @@ export default function EditProfile(props) {
             imagesJson['profilePic1Name'] = imageOne.name,
             imagesJson['profilePic1Type'] = imageOne.type
 
-            let { data } = await axios.post("https://proximityapp.vercel.app/api/uploadS3",  imagesJson); // http://localhost:3000/api/uploadS3 'https://proximityapp.vercel.app/api/uploadS3'
+            let { data } = await axios.post("https://proximityapp.vercel.app/api/uploadS3",  imagesJson); // http://localhost:3000/api/uploadS3   https://proximityapp.vercel.app/api/uploadS3
             console.log("s3 urls:", data)
             const url1 = data.url1;
             const S3Key = data.S3Key
@@ -69,7 +69,6 @@ export default function EditProfile(props) {
             formJson['geoJsonLocation'] = lonAndLat
         }
 
-
         // if(imageTwo){
         //     imagesJson['profilePic2Name'] = imageTwo.name,
         //     imagesJson['profilePic2Type'] = imageTwo.type
@@ -78,17 +77,13 @@ export default function EditProfile(props) {
         //     imagesJson['profilePic3Name'] = imageThree.name,
         //     imagesJson['profilePic3Type'] = imageThree.type
         // }
-        
-         
-     
 
         // formJson['profilePic2'] = imageTwo;
         // formJson['profilePic3'] = imageThree;
-    
         
         console.log("form sent to backend", formJson);
 
-        const response = await fetch('https://proximityapp.vercel.app/api/editProfile', {  // http://localhost:3000/api/editProfile 'https://proximityapp.vercel.app/api/editProfile'
+        const response = await fetch('https://proximityapp.vercel.app/api/editProfile', {  // http://localhost:3000/api/editProfile https://proximityapp.vercel.app/api/editProfile
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
