@@ -74,7 +74,7 @@ class Dashboard extends Component {
         console.log(element, this.state.sideMenu)
         // let home = document.getElementById('Homepage')
         if (element ) {
-            element.style.width = this.state.sideMenu? '40%' : '0%'
+            element.style.width = this.state.sideMenu? '50%' : '0%'
             document.body.style.backgroundColor = this.state.homeBlur? 'rgba(100,200,10,1)' : ''
         }
         // ReactDOM.findDOMNode(home).style.backgroundColor = this.state.homeBlur? 'rgba(0,0,0,0.4)' : ''
@@ -226,7 +226,7 @@ class Dashboard extends Component {
                 <a href="javascript:void(0)" className={styles.closebtn} onClick={this.menuClick}>&times;</a>
                 <div className={styles.menuOverlayContent}>
                     <a onClick={this.viewProfileClick_MenuClick}>Profile</a>
-                    {/* <a onClick={this.editLocation_MenuClick}>Location</a> */}
+                    <a href='https://forms.gle/t4aH6xUs67MtF2Uj9' target="_blank">Form</a>
                     {/* <a href="#">Friends</a> */}
                     {/* <a href="#">Contact</a> */}
                 </div>
