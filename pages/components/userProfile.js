@@ -6,7 +6,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart, faUserPlus} from '@fortawesome/free-solid-svg-icons';
 import { faInstagram, faLinkedin, faSnapchat, faTwitter, faYoutube, faTiktok} from '@fortawesome/free-brands-svg-icons';
 
-
+import Image from 'next/image';
 
 export default function UserProfile(props) {
 
@@ -67,7 +67,7 @@ export default function UserProfile(props) {
                     {/* Profile image */}
                     <div className={styles.CardContainer}>
                         <div className={styles.profileImageCard}>
-                            <img className={styles.profileImage} src={currentUser.profilePic1} alt='User Profile Image' />
+                            <Image className={styles.profileImage} src={currentUser.profilePic1} alt='User Profile Image' />
                         </div>
 
                     </div>

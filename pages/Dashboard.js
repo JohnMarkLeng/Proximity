@@ -226,7 +226,7 @@ class Dashboard extends Component {
                 <a href="javascript:void(0)" className={styles.closebtn} onClick={this.menuClick}>&times;</a>
                 <div className={styles.menuOverlayContent}>
                     <a onClick={this.viewProfileClick_MenuClick}>Profile</a>
-                    <a href='https://forms.gle/t4aH6xUs67MtF2Uj9' target="_blank">Form</a>
+                    <a href='https://forms.gle/t4aH6xUs67MtF2Uj9' target="_blank" rel="noopener noreferrer">Form</a>
                     {/* <a href="#">Friends</a> */}
                     {/* <a href="#">Contact</a> */}
                 </div>
