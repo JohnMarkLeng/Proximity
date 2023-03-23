@@ -50,7 +50,7 @@ export default function SelfProfile(props) {
                         // onClick={this.menuClick}
                         >
                             {/* <FontAwesomeIcon icon={faBars} style={{fontSize: 40, color: "#FFF"}} className={styles.getUserButton} /> */}
-                            <div className={styles.topContainerButtonsCover} onClick={() => props.viewUsersClick() }> <h3>Cancel</h3> </div>
+                            <div className={styles.topContainerButtonsCover} onClick={() => props.viewUsersClick() }> <h3>Back</h3> </div>
                         </button>
 
                         <h2>

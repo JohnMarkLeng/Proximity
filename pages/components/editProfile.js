@@ -406,7 +406,7 @@ export default function EditProfile(props) {
                                         <div className={styles.goalsText}> • <input className={styles.downToInputText} type="text" name="DownTo4" defaultValue={currentUser.DownTo4} placeholder='ex. casual robot fighting'/> </div>
 
 
-                                        <div className={styles.goalsText}> • <input className={styles.downToInputText} type="text" name="DownTo5" defaultValue={currentUser.DownTo5} placeholder='ex. competatively race drones'/> </div>                            
+                                        <div className={styles.goalsText}> • <input className={styles.downToInputText} type="text" name="DownTo5" defaultValue={currentUser.DownTo5} placeholder='ex. competitively race drones'/> </div>                            
                                     
                                 
                                 </div>
