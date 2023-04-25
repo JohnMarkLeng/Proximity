@@ -10,9 +10,9 @@ https://proximityapp.vercel.app/register
 
 <img width="1440" alt="Screen Shot 2023-04-25 at 7 43 53 PM" src="https://user-images.githubusercontent.com/25258604/234431086-7b79c181-520d-4847-840d-f4e779f50fac.png">
 
-<img width="600" alt="Screen Shot 2023-04-25 at 7 43 22 PM" src="https://user-images.githubusercontent.com/25258604/234431602-dc30a969-bf5f-4a0d-b1f6-acee687a995e.PNG">
-<img width="600" alt="Screen Shot 2023-04-25 at 7 43 53 PM" src="https://user-images.githubusercontent.com/25258604/234431628-ad845081-21c8-44a0-b7e6-941e0c45002a.PNG">
-<img width="600" alt="Screen Shot 2023-04-25 at 7 43 53 PM" src="https://user-images.githubusercontent.com/25258604/234431643-c9d27049-0922-4d41-b669-412508c7fcbd.PNG">
-<img width="600" alt="Screen Shot 2023-04-25 at 7 43 53 PM" src="https://user-images.githubusercontent.com/25258604/234431656-29a103dc-717e-43c5-a4ee-cfb4508d7919.PNG">
+<img width="350" alt="Screen Shot 2023-04-25 at 7 43 22 PM" src="https://user-images.githubusercontent.com/25258604/234431602-dc30a969-bf5f-4a0d-b1f6-acee687a995e.PNG">
+<img width="350" alt="Screen Shot 2023-04-25 at 7 43 53 PM" src="https://user-images.githubusercontent.com/25258604/234431628-ad845081-21c8-44a0-b7e6-941e0c45002a.PNG">
+<img width="350" alt="Screen Shot 2023-04-25 at 7 43 53 PM" src="https://user-images.githubusercontent.com/25258604/234431643-c9d27049-0922-4d41-b669-412508c7fcbd.PNG">
+<img width="350" alt="Screen Shot 2023-04-25 at 7 43 53 PM" src="https://user-images.githubusercontent.com/25258604/234431656-29a103dc-717e-43c5-a4ee-cfb4508d7919.PNG">
 
 
